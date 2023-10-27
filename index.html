@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+    <title>GOOSE GAME</title>
+    <!-- <script disable-devtool-auto src='./disable-devtool.js'></script> -->
+</head>
+<body>
+    <div id="alertWrapper" class="">
+        <a id="gameAlert"></a>
+        <a id="gameScore"></a>
+    </div>
+    <div id="gooseWrapper">
+        <img id="goose_head" class="goose" src="./source/goose_head.png"/>
+        <img id="goose_body" class="goose" src="./source/goose_body.png"/>
+        <img id="goose_foot_R" class="goose goose_foot stop_walking" src="./source/goose_foot_R.png"/>
+        <img id="goose_foot_L" class="goose goose_foot stop_walking" src="./source/goose_foot_L.png"/>
+    </div>
+    <div id="clickArea">
+        <div class="clickArea-item" id="clickArea_L" onclick="javascript:tiltGoose(-1);"></div>
+        <div class="clickArea-item" id="clickArea_R" onclick="javascript:tiltGoose(1);"></div>
+    </div>
+</body>
+</html>

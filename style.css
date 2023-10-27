@@ -1,0 +1,115 @@
+body, html {
+    overflow: hidden;
+}
+
+div#clickArea {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+div.clickArea-item { height: 100%; width: 50%; }
+div#clickArea_L { float: left; }
+div#clickArea_R { float: right; }
+
+div#alertWrapper {
+    top: 10%;
+    display: grid;
+    height: fit-content;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+}
+
+a#gameAlert {
+    font-size: 5vh;
+}
+
+a#gameScore {
+    font-size: 10vh;
+    transition: font-size 1s ease-out;
+}
+
+div#alertWrapper.in-game > a#gameAlert {
+    display: none !important;
+}
+div#alertWrapper.in-game > a#gameScore {
+    font-size: 15vh !important;
+}
+
+
+div#gooseWrapper {
+    height: 30%;
+    aspect-ratio: 1/1;
+    position: fixed;
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+}
+
+img.goose {
+    height: 100%;
+    position: absolute;
+    z-index: 2;  /* 요소 기준 */
+}
+
+img#goose_head {
+    height: 75%;
+    z-index: 1;  /* 요소 뒤 */
+    top: -1%;
+    right: 4.5%;
+
+    --degree : 0deg;
+    /* cubic-bezier(0.25, 0.5, 1, 0.75) */
+    /* transition-timing-function: ease-in  cubic-bezier(0.25, 0.5, 1, 0.75); */
+    /* transition: transform ease 120ms; */
+    transition: transform cubic-bezier(0.5, 0, 1, 0.5) 150ms;
+    /* rotate: var(--degree); */
+    /* transform: rotateZ(var(--degree)); */
+    transform: rotate(var(--degree));
+    transform-origin: 50% 75%;
+}
+
+img.stop_walking {
+    animation: none !important;
+}
+
+img.goose_foot {
+    height: 20%;
+    left: 50%;
+    top: 83%;
+    transform: translateX(-50%);
+
+    animation-name: walking;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+img#goose_foot_R {
+    z-index: 3;  /* 요소 앞 */
+}
+
+img#goose_foot_L {
+    z-index: 1;  /* 요소 뒤 */
+    left: 53%;
+    animation-delay: 250ms;
+}
+
+@keyframes walking {
+    100%, 0% {
+        left: 50%;
+        top: 83%;
+    }
+    33% {
+        left: 51.5%;
+        top: 80%;
+    }
+    66% {
+        left: 53%;
+        top: 83%;
+    }
+}
