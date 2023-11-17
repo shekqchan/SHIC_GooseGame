@@ -1,5 +1,15 @@
 body, html {
-    overflow: hidden;
+    width : 100%; height : 100%; margin : 0; padding : 0; overflow: hidden;
+}
+
+button { 
+    --background-color: #fff;
+    --color: #2F3545;
+    --border-color: #2F3545;
+    font-size: 16px; font-weight: bold;
+    padding: 16px 32px; margin: 8px;
+    border-radius: 24px;
+    background-color: var(--background-color); color: var(--color); border: 2px solid var(--border-color);
 }
 
 div#clickArea {
@@ -38,7 +48,6 @@ div#alertWrapper.in-game > a#gameAlert {
 div#alertWrapper.in-game > a#gameScore {
     font-size: 15vh !important;
 }
-
 
 div#gooseWrapper {
     height: 30%;
@@ -112,4 +121,52 @@ img#goose_foot_L {
         left: 53%;
         top: 83%;
     }
+}
+
+/*protectfilm*/ 
+div.wrapperlayer { 
+    z-index: 999;
+    width: 100vw; height: 100vh;
+    top: 0; left: 0; position: absolute;
+    min-width: 100%; 
+    background-color: rgba(0, 0, 0, 0.2); 
+    display: flex;
+    align-items: center; justify-content: center;
+}
+
+div.wrapper-modal {
+    z-index: 9999;
+    margin: auto;
+    padding: 32px; background-color: #fff; 
+    border-radius: 32px;
+    font-size: 1rem; text-align: center; line-height: 1.5; overflow-y: auto;
+    align-items: center; justify-content: center;
+}
+
+div.top-right {
+    position: fixed; top: 8px; right: 8px;
+}
+
+div.gameover-title { font-size: 32px; font-weight: bold; margin: 8px;}
+div.gameover-score { font-size: 24px; font-weight: bold; margin: 8px;}
+
+button#rankings {
+    width: 64px; height:64px; border: 0;
+    background-image: url('./source/rankings.svg');
+    background-position: center;
+    background-size: 100%;
+    background-color:rgba(0, 0, 0, 0);
+}
+
+.bg {
+    margin:0; padding:0; top:0; left:0;
+    width:100vw; height:100vh; min-height: 100vh; 
+    background:url('./source/background001.png') 0 center / 3482px repeat-x;
+    background-size: cover;
+    animation: movebg 60s linear infinite;
+}
+
+@keyframes movebg {
+    0% { background-position: 0 0; }
+    100% { background-position: -10000px 0; }
 }
