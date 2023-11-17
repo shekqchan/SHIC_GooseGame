@@ -8,20 +8,40 @@
     <title>GOOSE GAME</title>
     <!-- <script disable-devtool-auto src='./disable-devtool.js'></script> -->
 </head>
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
 <body>
-    <div id="alertWrapper" class="">
-        <a id="gameAlert"></a>
-        <a id="gameScore"></a>
-    </div>
-    <div id="gooseWrapper">
-        <img id="goose_head" class="goose" src="./source/goose_head.png"/>
-        <img id="goose_body" class="goose" src="./source/goose_body.png"/>
-        <img id="goose_foot_R" class="goose goose_foot stop_walking" src="./source/goose_foot_R.png"/>
-        <img id="goose_foot_L" class="goose goose_foot stop_walking" src="./source/goose_foot_L.png"/>
-    </div>
-    <div id="clickArea">
-        <div class="clickArea-item" id="clickArea_L" onclick="javascript:tiltGoose(-1);"></div>
-        <div class="clickArea-item" id="clickArea_R" onclick="javascript:tiltGoose(1);"></div>
+    <div class="bg" id="bg" style="animation-play-state: paused;">
+        <div id="alertWrapper" class="">
+            <a id="gameAlert"></a>
+            <a id="gameScore"></a>
+        </div>
+        <div id="gooseWrapper">
+            <img id="goose_head" class="goose" src="./source/goose_head.png"/>
+            <img id="goose_body" class="goose" src="./source/goose_body.png"/>
+            <img id="goose_foot_R" class="goose goose_foot stop_walking" src="./source/goose_foot_R.png"/>
+            <img id="goose_foot_L" class="goose goose_foot stop_walking" src="./source/goose_foot_L.png"/>
+        </div>
+        <div id="clickArea">
+            <div class="clickArea-item" id="clickArea_L" onclick="javascript:tiltGoose(-1);"></div>
+            <div class="clickArea-item" id="clickArea_R" onclick="javascript:tiltGoose(1);"></div>
+        </div>
+        <div class="wrapperlayer" id="wrapper-gameover" style="display: none;">
+            <div class="wrapper-modal">
+                <div class="gameover-title">GAME OVER!</div>
+                <div class="gameover-score">SCORE: <a id="game-score"></a></div>
+                <div class="gameover-btn">
+                    <button id="gameover-restart" onclick="javascript:closeGameOverAlert();">재시작</button>
+                    <button id="gameover-rankings" onclick="javascript:submitRankings();">랭킹 등록하기</button>
+                </div>
+        </div>
+        <div class="wrapperlayer" id="wrapper-ranking" style="display: none;">
+            <div class="wrapper-modal">
+                <div class="ranking-title">RANKING</div>
+            </div>
+        </div>
+        <div class="top-right">
+            <button id="rankings" onclick ="openRankings();"></button>
+        </div>
     </div>
 </body>
 </html>

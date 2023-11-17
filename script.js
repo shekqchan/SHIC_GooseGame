@@ -1,6 +1,6 @@
 let degree = 0;
 let score = 0;
-let isRunning = false;
+let isRunning = false; // null
 
 window.mobileCheck = () => {
     let check = false;
@@ -53,7 +53,8 @@ async function resetGame() {
 // startGame : 사용자 입력(시작키)후 게임 시작
 function startGame(goose_head, goose_feet, scoreEl) {
     isRunning = true;
-
+    $('#bg')[0].style.animationPlayState = 'running';
+    
     for (let footEl of goose_feet) { footEl.classList.remove('stop_walking'); }  // 거위 발 움직이기
     degree = 3 * (Math.random() < 0.5 ? -1 : 1) + 3 * (Math.random()-0.5) // +-((3 +- 1.5)deg)   // * (Math.random() < 0.5 ? -1 : 1);  // 5˚ 앞뒤 랜덤으로
     goose_head.style.setProperty('--degree', degree + 'deg');  // 머리 원위치
@@ -74,6 +75,7 @@ function startGame(goose_head, goose_feet, scoreEl) {
                 goose_head.style.setProperty('--degree', (degree > 150 ? 150 : -90) + 'deg');  // 최대각도 설정
                 for (let footEl of goose_feet) { footEl.classList.add('stop_walking'); }  // 거위 발 멈추기
                 document.removeEventListener("keydown", evt);
+                // console.log(score);
                 showGameOverAlert(resolve);
                 return;
             }
@@ -85,6 +87,7 @@ function startGame(goose_head, goose_feet, scoreEl) {
 // \frac{\left[\left(\left|k\right|^{0.2}+1\right)\ \cdot \ x^{0.5}\ \cdot \ 100\right]}{100}
 
 function tiltGoose(direction) {
+    console.log("click");
     degree += direction * Math.floor(15 * (Math.abs(degree)**0.2 + 1) * score**0.5 * 100) / 100
     // degree += direction * Math.floor(15 * (Math.abs(degree)**0.2 + 1) * score**0.5 * 100) / 100
     // degree += direction * Math.floor(15 * (Math.abs(degree)**0.5 + 1) * score**0.3 * 100) / 100
@@ -94,7 +97,35 @@ function tiltGoose(direction) {
 }
 
 function showGameOverAlert(callback) {
-    // 커스텀 alert
-    alert("GAME OVER");
+    $('#game-score')[0].innerText = score.toFixed(2) + 'm';
+    $('#wrapper-gameover')[0].style.display = '';
+    $('#bg')[0].style.animationPlayState = 'paused';
     callback();
 }
+
+// closeGameOverAlert : 게임오버 알림창 닫기
+const closeGameOverAlert = () => {
+    console.log("closeGameOverAlert");
+    $('#wrapper-gameover')[0].style.display = 'none';
+    
+}
+
+// submitRankings: 랭킹 등록  
+const submitRankings = () => {
+    const username = $('#username').value;
+    const score = $('#score').value;
+    const data = { username, score };
+    console.log(data);
+    openRankings();
+}
+
+// openRankings : 랭킹창 열기
+const openRankings = () => {
+    console.log("openRankings");
+    const elements = $('#wrapper-rankings');
+};
+
+// closeRankings : 랭킹창 닫기
+const closeRankings = () => {
+    $('#wrapper-rankings').style.display = 'none';
+};
